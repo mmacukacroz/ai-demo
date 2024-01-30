@@ -22,4 +22,7 @@ public class Booking {
     private LocalDate endDate;
 
     private String requestorName;
+
+    @Column(columnDefinition = "integer default 10")
+    private int roomNumber;
 }

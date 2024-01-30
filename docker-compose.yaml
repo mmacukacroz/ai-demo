@@ -1,0 +1,9 @@
+version: "3"
+services:
+  a1-db:
+    image: "bitnami/postgresql"
+    environment:
+      POSTGRESQL_PASSWORD: a1hr
+      POSTGRESQL_DATABASE: a1hr
+    ports:
+      - "5432:5432"
