@@ -31,12 +31,19 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public Booking getBookingById(String id) {
+        if (id == null) {
+            throw new IllegalArgumentException("Booking ID cannot be null");
+        }
         return bookingRepository.findById(id).orElse(null);
     }
 
     @Override
     public Booking saveBooking(final BookingCommand bookingCommand) {
-        User user = userRepository.findById(bookingCommand.getUserId()).orElseThrow(() -> new RuntimeException("User not found"));
+        String userId = bookingCommand.getUserId();
+        if (userId == null) {
+            throw new IllegalArgumentException("User ID cannot be null");
+        }
+        User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
         Booking booking = new Booking(null, bookingCommand.getStartDate(), bookingCommand.getEndDate(), user, bookingCommand.getRoomNumber());
         return bookingRepository.save(booking);
     }

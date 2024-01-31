@@ -5,6 +5,8 @@ import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 import java.time.LocalDate;
 
 @Data
@@ -16,7 +18,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
+    private Long id;
 
     private String username;
 
@@ -26,5 +28,6 @@ public class User {
 
     @ManyToOne
     @JoinColumn(name = "address_id")
+    @Cascade(CascadeType.ALL)
     private Address address;
 }
