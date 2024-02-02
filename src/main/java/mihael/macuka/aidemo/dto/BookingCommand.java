@@ -1,10 +1,10 @@
 package mihael.macuka.aidemo.dto;
 
+import java.time.LocalDate;
+import java.util.List;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -14,4 +14,5 @@ public class BookingCommand {
     private LocalDate endDate;
     private String userId;
     private int roomNumber;
+    private List<String> cleaningPersonIds;
 }
