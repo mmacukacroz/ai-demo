@@ -49,6 +49,12 @@ public class BookingServiceImpl implements BookingService {
             throw new IllegalArgumentException("User ID cannot be null");
         }
         User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
+
+
+        if(bookingCommand.getCleaningPersonIds() == null || bookingCommand.getCleaningPersonIds().isEmpty()){
+            throw new IllegalArgumentException("Cleaning person IDs cannot be null or empty");
+        }
+
         final List<CleaningPerson> cleaningPeople = cleaningPersonRepository.findAllById(bookingCommand.getCleaningPersonIds());
         Booking booking = new Booking(null, bookingCommand.getStartDate(), bookingCommand.getEndDate(), user, bookingCommand.getRoomNumber(),cleaningPeople);
         return bookingRepository.save(booking);
