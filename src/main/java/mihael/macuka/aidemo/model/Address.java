@@ -12,6 +12,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@NamedQuery(name = "Address.findByUserId",
+            query = "SELECT a FROM Address a WHERE a.id = (SELECT u.address.id FROM User u WHERE u.id = :userId)")
 public class Address {
 
     @Id
