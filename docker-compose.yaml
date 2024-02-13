@@ -7,3 +7,10 @@ services:
       POSTGRESQL_DATABASE: a1hr
     ports:
       - "5432:5432"
+  demo-db:
+    image: "bitnami/postgresql"
+    environment:
+      POSTGRESQL_PASSWORD: demo
+      POSTGRESQL_DATABASE: demo
+    ports:
+      - "5433:5432"
