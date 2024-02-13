@@ -35,6 +35,6 @@ public class AddressServiceImpl implements AddressService {
         TypedQuery<Address> query = entityManager.createNamedQuery("Address.findByUserId", Address.class);
         query.setParameter("userId", userId);
         final List<Address> addresses = query.getResultList();
-        return addresses.size() > 0 ? addresses.get(0) : null;
+        return addresses.isEmpty() ? null : addresses.get(0);
     }
 }
